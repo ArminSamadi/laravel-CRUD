@@ -73,12 +73,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Post $post)
     {
-        $post = Post::find($id);
-        $post->title = $request->title;
-        $post->user_id = $request->user_id;
-        $post->save();
+        $post->update();   
         return redirect()->route('post.index')->with('success','record updated successfully');
     }
 
